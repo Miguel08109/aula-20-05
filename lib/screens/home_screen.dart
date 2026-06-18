@@ -3,6 +3,8 @@ import 'login_screen.dart';
 import '../database/Database.dart';
 import '../model/ServiceOrder.dart';
 import 'cadastro_order_modal.dart';
+import 'clientes_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   final Database _db = Database();
   List<ServiceOrder> _serviceOrders = [];
 
@@ -138,6 +141,33 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         },
         child: const Icon(Icons.add),
+      ),
+      drawer: Drawer(
+        child: ListView(children: [
+                        TextButton(
+                onPressed: () {
+                  // Navegação comum: Adiciona a tela de cadastro no topo da pilha
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Atividades'),
+              ), 
+              TextButton(
+                onPressed: () {
+                  // Navegação comum: Adiciona a tela de cadastro no topo da pilha
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ClientesScreen(),
+                    ),
+                  );
+                },
+                child: const Text('Clientes'),
+              )],),
       ),
     );
   }
